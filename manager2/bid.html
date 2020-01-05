@@ -12,22 +12,31 @@
         <script src="../js/jquery.js"></script>
         <script src="../js/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="../js/collector.js"></script>
-        <script type="text/javascript" src="../js/collectortest.js"></script>
+        <script type="text/javascript" src="../js/showbid.js"></script>
     </head>
     <body>
+        <style type="text/css">
+            .collectorhead{
+                color:blue;
+            }
+            .collectorhead:hover{
+                color:grey;
+                cursor: grab;
+            }
+        </style>
         <div data-role="page" id="listpage" data-quicklinks="true">
             <div data-role="header">
-                <h1>View Information</h1>
+                <h1>View Bids</h1>
             </div>
             <!-- /header -->
-           
+          
             <label></label>
-            <button onclick="backEvent()">Back</button>
+            <button onclick="backtobuyer()">Back</button>
             <div role="main" class="ui-content">
-                <h2>Recent Information</h2>
+                <h2>Recent Waste</h2>
                 <div data-demo-html="true">
                     <ul data-role="listview" id="newslist">
-                        <li>Loading Information</li>
+                        <li onclick="onListClicked()">Loading Waste</li>
                     </ul>
                 </div>
             </div>
@@ -82,8 +91,12 @@
                         </form>
                         
                     </div>
-                    
-                </div>
                 
+                </div>
+                <script type="text/javascript">
+                    function backtobuyer(){
+                        window.location = "managerdashboard.html"
+                    }
+                </script>
             </body>
         </html>

@@ -71,64 +71,40 @@
     display: inline-block;
     font-weight: bold;
 }
-        </style>
 
-        <div class="hover_bkgr_fricc">
-    <span class="helper"></span>
-    <div>
-        <div class="popupCloseButton">X</div>
-        <p>Hey Collector You got new <b style="color:red"> Notification </b> on Waste<br /><a style="color: blue;" onclick="viewWaste()">Click to View here</a></p>
-    </div>
-</div>
+        </style>
         <div data-role="page">
             <div data-role="header">
-                <h2>Collector Inteface</h2>
+                <h2>Buyer Inteface</h2>
             </div>
             <div data-role="main" class="ui-content">
                 <form id="userForm">
                     <div class="ui-field-contain">
-                        
-                        <input type="submit" name="AddInfo" onclick="addInfo()" value="Add Info">
-                        <label></label>
-                      
-                        <label></label>
-                        <input type="submit" name="ViewInfo" onclick="Logout()" value="View Info"> <br>
-
-                          <input id="click" type="button" value="View Waste" onclick="viewWaste();" />
-                          <input id="click" type="button" value="View Collected Waste" onclick="viewCollectedWaste();" />
-
+                          <input id="click" type="button" value="Buy bid" onclick="onBuy();" />
                      <input id="clickMe" type="button" value="Logout" onclick="doFunction();" />
-                       
+                       <audio id="audiotag1" src="./audio.mp3" preload="auto"></audio>
                     </div>
                 </form>
             </div>
         </div>
 
 
-        <script type="text/javascript"> 
-         $('.hover_bkgr_fricc').click(function(){
-                    $('.hover_bkgr_fricc').hide();
-                    });
-                    $('.popupCloseButton').click(function(){
-                    $('.hover_bkgr_fricc').hide();
-                    });
-                    var counter = 0   
-                $( document ).ready(function() {
-                    $.fn.myfunction = function () {
-                    $.get("http://localhost/backend/notify.php",function(data,status){
-                    var item = Number(data)
-                    if(item > counter && counter != 0){
-                        console.log("hello")
-                        $('.hover_bkgr_fricc').show();
-                        let audio = new Audio("./audio.mp3")
-                        audio.play()
-                    }
-                    counter = Number(data)
-                   }) 
-                    setTimeout("$('.foo').myfunction()",1000);
-                };
-                $('.foo').myfunction();
-                });
+        <script type="text/javascript">
+            
+
+    function onBuy(){
+        var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+   var username = data.name
+        window.location="bid.html?name="+ encodeURIComponent(username)
+    }   
+
         </script>
+    }
     </body>
 </html>

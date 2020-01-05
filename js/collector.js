@@ -5,7 +5,13 @@ window.location ="addInfo.html";
 function back(){
 window.location ="managerdashboard.html";
 }
+function viewCollectedWasteformanager(){
+window.location = "viewWaste.html"
+}
 
+function viewBid(){
+window.location = "bid.html"
+}
 
 // inserting time by the collector
 function add(){
@@ -125,6 +131,10 @@ $.each( eventList, function( i, time ) {
 
 function viewWaste(){
     window.location="viewWaste.html";
+}
+
+function viewCollectedWaste(){
+    window.location="collected.html";
 }
 
 function ViewWaste(){

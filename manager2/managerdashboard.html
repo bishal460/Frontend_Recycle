@@ -71,51 +71,45 @@
     display: inline-block;
     font-weight: bold;
 }
+
         </style>
 
         <div class="hover_bkgr_fricc">
     <span class="helper"></span>
     <div>
         <div class="popupCloseButton">X</div>
-        <p>Hey Collector You got new <b style="color:red"> Notification </b> on Waste<br /><a style="color: blue;" onclick="viewWaste()">Click to View here</a></p>
+        <p>Hey Manager You got new <b style="color:red"> Notification </b> on Waste<br /><a style="color: blue;" onclick="viewWaste()">Click to View here</a></p>
     </div>
 </div>
         <div data-role="page">
             <div data-role="header">
-                <h2>Collector Inteface</h2>
+                <h2>Manager Inteface</h2>
             </div>
             <div data-role="main" class="ui-content">
                 <form id="userForm">
                     <div class="ui-field-contain">
-                        
-                        <input type="submit" name="AddInfo" onclick="addInfo()" value="Add Info">
-                        <label></label>
-                      
-                        <label></label>
-                        <input type="submit" name="ViewInfo" onclick="Logout()" value="View Info"> <br>
 
-                          <input id="click" type="button" value="View Waste" onclick="viewWaste();" />
-                          <input id="click" type="button" value="View Collected Waste" onclick="viewCollectedWaste();" />
-
+                          <input id="click" type="button" value="View Collected Waste" onclick="viewCollectedWasteformanager();" />
+                          <input id="click" type="button" value="View bid" onclick="viewBid();" />
                      <input id="clickMe" type="button" value="Logout" onclick="doFunction();" />
-                       
+                       <audio id="audiotag1" src="./audio.mp3" preload="auto"></audio>
                     </div>
                 </form>
             </div>
         </div>
 
 
-        <script type="text/javascript"> 
-         $('.hover_bkgr_fricc').click(function(){
+        <script type="text/javascript">    
+                $( document ).ready(function() {
+                    $('.hover_bkgr_fricc').click(function(){
                     $('.hover_bkgr_fricc').hide();
                     });
                     $('.popupCloseButton').click(function(){
                     $('.hover_bkgr_fricc').hide();
                     });
-                    var counter = 0   
-                $( document ).ready(function() {
+                    var counter = 0
                     $.fn.myfunction = function () {
-                    $.get("http://localhost/backend/notify.php",function(data,status){
+                   $.get("http://localhost/backend/notifyManger.php",function(data,status){
                     var item = Number(data)
                     if(item > counter && counter != 0){
                         console.log("hello")
@@ -125,6 +119,7 @@
                     }
                     counter = Number(data)
                    }) 
+
                     setTimeout("$('.foo').myfunction()",1000);
                 };
                 $('.foo').myfunction();
